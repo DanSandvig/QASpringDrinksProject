@@ -54,34 +54,62 @@ public class DrinkServiceUnitTests {
 	
 	@Test
 	public void testGetById() {
-		long testInput = 3L;
-		Optional<Drink> mockOutput = 
+		long testInputValid = 3L;
+		long testInputInvalid = 4L;
+		Optional<Drink> mockOutputValid = 
 				Optional.ofNullable(new Drink(3L, "DnB", 330, true, 333));
+		Optional<Drink> mockOutputInvalid = Optional.ofNullable(null);
 		
-		Mockito.when(this.drinkRepo.findById(testInput)).thenReturn(mockOutput);
+		Mockito.when(this.drinkRepo.findById(testInputValid)).
+												thenReturn(mockOutputValid);
+		Mockito.when(this.drinkRepo.findById(testInputInvalid)).
+												thenReturn(mockOutputInvalid);
 		
-		assertEquals(mockOutput.get(), this.drinkService.getByID(testInput));
+		assertEquals(mockOutputValid.get(), this.drinkService.getByID(testInputValid));
+		assertEquals(null, this.drinkService.getByID(testInputInvalid));
 		
-		Mockito.verify(this.drinkRepo, Mockito.times(1)).findById(testInput);
+		Mockito.verify(this.drinkRepo, Mockito.times(1)).findById(testInputValid);
+		Mockito.verify(this.drinkRepo, Mockito.times(1)).findById(testInputInvalid);
 	}
 	
 	@Test
 	public void testUpdate() {
-		long testInputId = 4L;
+		long testInputIdValid = 4L;
+		long testInputIdInvalid = 5L;
 		Drink testInputDrink = new Drink("Orange Juice", 1000, false, 332);
-		Optional<Drink> mockOutput = 
+		
+		Optional<Drink> mockOutputValid = 
 				Optional.ofNullable(new Drink(4L, "Orange Juice", 1000, false, 333));
+		Optional<Drink> mockOutputInvalid = Optional.ofNullable(null);
 		Drink methodResult = new Drink(4L, "Orange Juice", 1000, false, 332);
 		
-		Mockito.when(this.drinkRepo.findById(4L)).thenReturn(mockOutput);
+		Mockito.when(this.drinkRepo.findById(testInputIdValid)).
+												thenReturn(mockOutputValid);
 		Mockito.when(this.drinkRepo.saveAndFlush(methodResult)).
 												thenReturn(methodResult);
+		Mockito.when(this.drinkRepo.findById(testInputIdInvalid)).
+												thenReturn(mockOutputInvalid);
 		
 		assertEquals(methodResult, 
-				this.drinkService.update(testInputId, testInputDrink));
+				this.drinkService.update(testInputIdValid, testInputDrink));
+		assertEquals(null, 
+				this.drinkService.update(testInputIdInvalid, testInputDrink));
 		
-		Mockito.verify(this.drinkRepo, Mockito.times(1)).findById(testInputId);
+		Mockito.verify(this.drinkRepo, Mockito.times(1)).findById(testInputIdValid);
 		Mockito.verify(this.drinkRepo, Mockito.times(1)).saveAndFlush(methodResult);
+		Mockito.verify(this.drinkRepo, Mockito.times(1)).findById(testInputIdInvalid);
+	}
+	
+	@Test
+	public void testDelete() {
+		long testInput= 5L;
+		
+		Mockito.when(this.drinkRepo.existsById(testInput)).thenReturn(false);
+		
+		assertEquals(true, this.drinkService.delete(testInput));
+		
+		Mockito.verify(this.drinkRepo, Mockito.times(1)).deleteById(testInput);
+		Mockito.verify(this.drinkRepo, Mockito.times(1)).existsById(testInput);		
 	}
 
 }
