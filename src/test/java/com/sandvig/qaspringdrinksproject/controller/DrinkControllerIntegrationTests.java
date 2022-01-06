@@ -1,8 +1,12 @@
 package com.sandvig.qaspringdrinksproject.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +47,18 @@ public class DrinkControllerIntegrationTests {
 		.contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isCreated())
 		.andExpect(content().json(expectedDrinkAsJson));
+	}
+	
+	@Test
+	public void testGetAll() throws Exception {
+		List<Drink> expectedList = new ArrayList<Drink>();
+		expectedList.add(new Drink(1L, "DnB", 2000, true, 333));
+		expectedList.add(new Drink(2L, "Root Beer", 1000, true, 332));
+		
+		String expectedListAsJson = mapper.writeValueAsString(expectedList);
+		
+		mvc.perform(get("/drink/getall"))
+		.andExpect(status().isOk())
+		.andExpect(content().json(expectedListAsJson));
 	}
 }
