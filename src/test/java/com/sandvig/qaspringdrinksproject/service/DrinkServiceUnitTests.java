@@ -69,11 +69,11 @@ public class DrinkServiceUnitTests {
 	public void testUpdate() {
 		long testInputId = 4L;
 		Drink testInputDrink = new Drink("Orange Juice", 1000, false, 332);
-		Optional<Drink> mockOutput1 = 
+		Optional<Drink> mockOutput = 
 				Optional.ofNullable(new Drink(4L, "Orange Juice", 1000, false, 333));
 		Drink methodResult = new Drink(4L, "Orange Juice", 1000, false, 332);
 		
-		Mockito.when(this.drinkRepo.findById(4L)).thenReturn(mockOutput1);
+		Mockito.when(this.drinkRepo.findById(4L)).thenReturn(mockOutput);
 		Mockito.when(this.drinkRepo.saveAndFlush(methodResult)).
 												thenReturn(methodResult);
 		
