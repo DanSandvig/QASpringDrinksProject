@@ -1,5 +1,6 @@
 package com.sandvig.qaspringdrinksproject.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -87,5 +88,11 @@ public class DrinkControllerIntegrationTests {
 		.contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isAccepted())
 		.andExpect(content().json(expectedDrinkAsJson));
+	}
+	
+	@Test
+	public void testDelete() throws Exception {
+		mvc.perform(delete("/drink/delete/1"))
+		.andExpect(status().isNoContent());
 	}
 }
