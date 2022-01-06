@@ -1,8 +1,12 @@
 package com.sandvig.qaspringdrinksproject.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,7 +36,7 @@ public class DrinkControllerUnitTests {
 	private DrinkService drinkService;
 	
 	@Test
-	public void createTest() throws Exception {
+	public void testCreate() throws Exception {
 		Drink testDrink = new Drink("Tizer", 1000, true, 333);
 		String testDrinkAsJson = this.mapper.writeValueAsString(testDrink);
 		
@@ -43,6 +47,20 @@ public class DrinkControllerUnitTests {
 		.contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isCreated())
 		.andExpect(content().json(testDrinkAsJson));
+	}
+	
+	@Test
+	public void testGetAll() throws Exception {
+		List<Drink> mockOutput = new ArrayList<Drink>();
+		mockOutput.add(new Drink(1L, "Fanta", 1000, true, 333));
+		mockOutput.add(new Drink(2L, "Tizer", 1000, true, 333));
+		String mockOutputAsJson = this.mapper.writeValueAsString(mockOutput);
+		
+		Mockito.when(this.drinkService.getAll()).thenReturn(mockOutput);
+		
+		mvc.perform(get("/drink/getall"))
+		.andExpect(status().isOk())
+		.andExpect(content().json(mockOutputAsJson));
 	}
 
 }
