@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -49,6 +50,38 @@ public class DrinkServiceUnitTests {
 		assertEquals(mockOutput, this.drinkService.getAll());
 		
 		Mockito.verify(this.drinkRepo, Mockito.times(1)).findAll();
+	}
+	
+	@Test
+	public void testGetById() {
+		long testInput = 3L;
+		Optional<Drink> mockOutput = 
+				Optional.ofNullable(new Drink(3L, "DnB", 330, true, 333));
+		
+		Mockito.when(this.drinkRepo.findById(testInput)).thenReturn(mockOutput);
+		
+		assertEquals(mockOutput.get(), this.drinkService.getByID(testInput));
+		
+		Mockito.verify(this.drinkRepo, Mockito.times(1)).findById(testInput);
+	}
+	
+	@Test
+	public void testUpdate() {
+		long testInputId = 4L;
+		Drink testInputDrink = new Drink("Orange Juice", 1000, false, 332);
+		Optional<Drink> mockOutput1 = 
+				Optional.ofNullable(new Drink(4L, "Orange Juice", 1000, false, 333));
+		Drink methodResult = new Drink(4L, "Orange Juice", 1000, false, 332);
+		
+		Mockito.when(this.drinkRepo.findById(4L)).thenReturn(mockOutput1);
+		Mockito.when(this.drinkRepo.saveAndFlush(methodResult)).
+												thenReturn(methodResult);
+		
+		assertEquals(methodResult, 
+				this.drinkService.update(testInputId, testInputDrink));
+		
+		Mockito.verify(this.drinkRepo, Mockito.times(1)).findById(testInputId);
+		Mockito.verify(this.drinkRepo, Mockito.times(1)).saveAndFlush(methodResult);
 	}
 
 }
