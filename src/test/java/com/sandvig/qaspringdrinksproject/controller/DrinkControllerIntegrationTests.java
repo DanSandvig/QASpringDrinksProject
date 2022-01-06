@@ -2,6 +2,7 @@ package com.sandvig.qaspringdrinksproject.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -60,5 +61,31 @@ public class DrinkControllerIntegrationTests {
 		mvc.perform(get("/drink/getall"))
 		.andExpect(status().isOk())
 		.andExpect(content().json(expectedListAsJson));
+	}
+	
+	@Test
+	public void testGetById() throws Exception {
+		Drink expectedDrink = new Drink(2L, "Root Beer", 1000, true, 332);
+		
+		String expectedDrinkAsJson = mapper.writeValueAsString(expectedDrink);
+		
+		mvc.perform(get("/drink/getbyid/2"))
+		.andExpect(status().isOk())
+		.andExpect(content().json(expectedDrinkAsJson));
+	}
+	
+	@Test
+	public void testUpdate() throws Exception {
+		Drink testDrink = new Drink("DnB", 1000, true, 332);
+		Drink expectedDrink = new Drink(1L, "DnB", 1000, true, 332);
+		
+		String testDrinkAsJson = mapper.writeValueAsString(testDrink);
+		String expectedDrinkAsJson = mapper.writeValueAsString(expectedDrink);
+		
+		mvc.perform(put("/drink/update/1")
+		.content(testDrinkAsJson)
+		.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isAccepted())
+		.andExpect(content().json(expectedDrinkAsJson));
 	}
 }
