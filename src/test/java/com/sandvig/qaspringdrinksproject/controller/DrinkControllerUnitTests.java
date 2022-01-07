@@ -75,8 +75,20 @@ public class DrinkControllerUnitTests {
 		
 		mvc.perform(get("/drink/getbyid/3"))
 		.andExpect(status().isOk())
-		.andExpect(content().json(mockOutputAsJson));
+		.andExpect(content().json(mockOutputAsJson));		
+	}
+	
+	@Test
+	public void testGetByName() throws Exception {
+		String testName = "R Whites";
+		Drink mockOutput = new Drink(3L, "R Whites", 2000, true, 333);
+		String mockOutputAsJson = this.mapper.writeValueAsString(mockOutput);
 		
+		Mockito.when(this.drinkService.getByName(testName)).thenReturn(mockOutput);
+		
+		mvc.perform(get("/drink/getbyname/R Whites"))
+		.andExpect(status().isOk())
+		.andExpect(content().json(mockOutputAsJson));		
 	}
 	
 	@Test
