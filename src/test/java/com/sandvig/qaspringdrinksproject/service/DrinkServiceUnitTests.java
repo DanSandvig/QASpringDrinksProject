@@ -73,6 +73,24 @@ public class DrinkServiceUnitTests {
 	}
 	
 	@Test
+	public void testGetByName() {
+		String testInputValid = "Fanta";
+		String testInputInvalid = "Badger";
+		Drink mockOutputValid = new Drink(3L, "Fanta", 2000, true, 333);
+		
+		Mockito.when(this.drinkRepo.findDrinkByName(testInputValid)).
+												thenReturn(mockOutputValid);
+		Mockito.when(this.drinkRepo.findDrinkByName(testInputInvalid)).
+												thenReturn(null);
+		
+		assertEquals(mockOutputValid, this.drinkService.getByName(testInputValid));
+		assertEquals(null, this.drinkService.getByName(testInputInvalid));
+		
+		Mockito.verify(this.drinkRepo, Mockito.times(1)).findDrinkByName(testInputValid);
+		Mockito.verify(this.drinkRepo, Mockito.times(1)).findDrinkByName(testInputInvalid);
+	}
+	
+	@Test
 	public void testUpdate() {
 		long testInputIdValid = 4L;
 		long testInputIdInvalid = 5L;
