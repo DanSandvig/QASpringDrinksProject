@@ -76,6 +76,17 @@ public class DrinkControllerIntegrationTests {
 	}
 	
 	@Test
+	public void testGetByName() throws Exception {
+		Drink expectedDrink = new Drink(2L, "Root Beer", 1000, true, 332);
+		
+		String expectedDrinkAsJson = mapper.writeValueAsString(expectedDrink);
+		
+		mvc.perform(get("/drink/getbyname/Root Beer"))
+		.andExpect(status().isOk())
+		.andExpect(content().json(expectedDrinkAsJson));
+	}
+	
+	@Test
 	public void testUpdate() throws Exception {
 		Drink testDrink = new Drink("DnB", 1000, true, 332);
 		Drink expectedDrink = new Drink(1L, "DnB", 1000, true, 332);
