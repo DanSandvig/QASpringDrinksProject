@@ -38,6 +38,16 @@ public class DrinkService implements CoreServiceMethods<Drink> {
 	}
 	
 	//Optional of type allows for result to be null without throwing exception
+	public Drink getByName(String name) {
+		Optional<Drink> optionalDrink = 
+				Optional.ofNullable(this.drinkRepo.findDrinkByName(name));
+		if (optionalDrink.isPresent()) {
+			return optionalDrink.get();
+		}
+		return null;
+	}
+	
+	//Optional of type allows for result to be null without throwing exception
 	@Override
 	public Drink update(long id, Drink updatedDrink) {
 		Optional<Drink> optionalDrink = this.drinkRepo.findById(id);

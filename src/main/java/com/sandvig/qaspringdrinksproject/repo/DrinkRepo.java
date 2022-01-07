@@ -7,5 +7,7 @@ import com.sandvig.qaspringdrinksproject.domain.Drink;
 
 @Repository
 public interface DrinkRepo extends JpaRepository<Drink, Long>{
+	
+	Drink findDrinkByName(String name);
 
 }
