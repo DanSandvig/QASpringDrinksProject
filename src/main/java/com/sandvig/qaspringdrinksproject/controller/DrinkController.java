@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.sandvig.qaspringdrinksproject.domain.Drink;
 import com.sandvig.qaspringdrinksproject.service.DrinkService;
@@ -45,6 +44,13 @@ public class DrinkController {
 	@GetMapping("/getbyid/{id}")
 	public ResponseEntity<Drink> getDrinkById(@PathVariable long id) {
 		return new ResponseEntity<Drink>(this.drinkService.getByID(id),
+														HttpStatus.OK);
+	}
+	
+	//Read By Name
+	@GetMapping("/getbyname/{name}")
+	public ResponseEntity<Drink> getDrinkByName(@PathVariable String name) {
+		return new ResponseEntity<Drink>(this.drinkService.getByName(name),
 														HttpStatus.OK);
 	}
 	
