@@ -60,8 +60,10 @@ For myself, one of the (many, many) things I will be looking to expand my knowle
 
 ## Screenshot Of Test And Coverage Result
 <details>
-<summary>Click to expand</summary>  
-![JUnit5 Tests And Coverage](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/JUnit5TestsAndCoverage.png)
+<summary>Click to expand</summary> 
+  
+![JUnit5 Tests And Coverage](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/JUnit5TestsAndCoverage.png)  
+  
 </details>
 
 ## Link To Jira Board
