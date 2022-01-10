@@ -2,6 +2,10 @@
 
 ## Why Are We Doing This?
 
+This project will assess our ability to build a basic backend java service using Spring Boot to program an API with CRUD functionality.  
+The program will perform operations on a MySql database in response to http requests to demonstrate our understanding of, and ability to direct, the flow of data in a manner similar to production software.  
+We will also be demonstrating our wider understanding of software design through effective source control, thorough testing, and appropriate documentation.
+
 ## How I Expected The Challenge To Go
 
 ## What Went Well/What Didn't Go As Planned?
