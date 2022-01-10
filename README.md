@@ -24,6 +24,12 @@ I was pleased and relieved when all by CRUD tests with postman worked first time
 
 ## Possible Improvements For Future Revisions Of The Project
 
+As the program is designed to accept user input (in this case via http requests) the first thing I would look to implement would be more extensive validation and exception handling, ideally with detailed feedback to the user of the problem with the data they submitted and suggestions to correct it where possible.
+
+Even more ideal would be the creation of a front end, both to provide a user interface to submit requests rather than using postman, and also to carry out some of the data validation at source, rather than allowing invalid data to be submitted to the API in the first place.
+
+For myself, one of the (many, many) things I will be looking to expand my knowledge on in the future is Regular Expressions so I can understand how to perform more detailed data validation, but I will also be learning more about Docker and Kubernetes so I can start to understand how I might deploy a similar project as a serverless web app.
+
 ## Screenshots Of Postman Requests And API Output
 ![Postman Create Request]
 ![Postman Get All Request]
