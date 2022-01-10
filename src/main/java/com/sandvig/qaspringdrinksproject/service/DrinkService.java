@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.sandvig.qaspringdrinksproject.domain.Drink;
+import com.sandvig.qaspringdrinksproject.exception.ABadgerIsNotADrinkException;
 import com.sandvig.qaspringdrinksproject.repo.DrinkRepo;
 
 @Service
@@ -38,7 +39,13 @@ public class DrinkService implements CoreServiceMethods<Drink> {
 	}
 	
 	//Optional of type allows for result to be null without throwing exception
-	public Drink getByName(String name) {
+	public Drink getByName(String name) throws ABadgerIsNotADrinkException {
+		
+		if (name.equals("Badger") || name.equals("badger")) {
+			throw new ABadgerIsNotADrinkException
+			("A badger isn't a drink! Why would anyone type that? What is wrong with people...");
+		}
+		
 		Optional<Drink> optionalDrink = 
 				Optional.ofNullable(this.drinkRepo.findDrinkByName(name));
 		if (optionalDrink.isPresent()) {
