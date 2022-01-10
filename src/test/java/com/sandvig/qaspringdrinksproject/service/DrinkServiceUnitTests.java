@@ -75,7 +75,7 @@ public class DrinkServiceUnitTests {
 	@Test
 	public void testGetByName() {
 		String testInputValid = "Fanta";
-		String testInputInvalid = "Badger";
+		String testInputInvalid = "Mushroom";
 		Drink mockOutputValid = new Drink(3L, "Fanta", 2000, true, 333);
 		
 		Mockito.when(this.drinkRepo.findDrinkByName(testInputValid)).
