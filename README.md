@@ -72,4 +72,4 @@ For myself, one of the (many, many) things I will be looking to expand my knowle
 </details>
 
 ## Link To Jira Board
-[Jira board for project](https://superqaadventureforce.atlassian.net/jira/software/projects/DRI/boards/3)
+[Jira board for project](https://superqaadventureforce.atlassian.net/jira/software/projects/DRI/boards/3/roadmap)
