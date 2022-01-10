@@ -18,7 +18,7 @@ As I expected setting up Jira and writing the Unit and Integration tests took up
 
 I had assumed that as MoSCoW and Acceptance Criteria seemed to standard practice they would be a default part of Jira so I hadn't counted on having to learn how to set them up myself, but once I understood a bit more on how to customize Jira it was relatively straightforward.  
 
-Writing the unit tests took me a bit of time to get into the right mindset, there were a couple of methods I initially struggled to work out how to test, but in the end I got them all done and achieved over 95% coverage in the end so I was please with that.
+Writing the unit tests took me a bit of time to get into the right mindset, there were a couple of methods I initially struggled to work out how to test, but in the end I got them all done and achieved over 95% coverage in the end so I was pleased with that.
 
 I was pleased and relieved when all by CRUD tests with postman worked first time, for all I had completed all the unit and integration tests I'm still not experienced enough to "trust the process" and was convinced something would still go wrong the first time I ran the app.
 
