@@ -44,19 +44,24 @@ For myself, one of the (many, many) things I will be looking to expand my knowle
 
 ## Screenshots Of Postman Requests And API Output
 <details>
-<summary>Click to expand</summary>  
-![Postman Create Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanCreateRequest.png)
-![Postman Get All Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanGetAllRequest.png)
-![Postman Get By Id Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanGetByIdRequest.png)
-![Postman Get By Name Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanGetByNameRequest.png)
-![Postman Update Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanUpdateRequest.png)
-![Postman Delete Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanDeleteRequest.png)
+<summary>Click to expand</summary> 
+  
+![Postman Create Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanCreateRequest.png)  
+![Postman Get All Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanGetAllRequest.png)  
+![Postman Get By Id Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanGetByIdRequest.png)  
+![Postman Get By Name Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanGetByNameRequest.png)  
+![Postman Update Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanUpdateRequest.png)  
+![Postman Delete Request](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/PostmanDeleteRequest.png)  
+  
 </details>
 
 ## Screenshot Of Database To Show Data Persistence
+<details>
+<summary>Click to expand</summary> 
   
 ![MySql Database](https://github.com/DanSandvig/QASpringDrinksProject/blob/main/Documentation/MySqlDatabsePersistence.png)
-
+  
+</details>
 
 ## Screenshot Of Test And Coverage Result
 <details>
